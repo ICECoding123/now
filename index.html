@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ละครตะวันตกยุคปัจจุบัน</title>
+    <title>ประวัติศาสตร์ละครตะวันตก</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
@@ -14,346 +12,228 @@
         }
 
         body {
-            font-family: 'Prompt', sans-serif;
-            background: #1a1612;
+            font-family: 'Sarabun', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
         }
 
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            width: 100%;
-            height: 100%;
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
             top: 0;
-            left: 0;
-            z-index: 0;
-            background: linear-gradient(135deg, #8B6F47 0%, #C4A672 50%, #D4AF77 100%);
-            opacity: 0.95;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
         }
 
-        @keyframes moveGrid {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        .navbar-brand {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 8px;
+        }
+
+        .navbar-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 1;
+            padding: 20px;
         }
 
-        /* Header with animation */
-        header {
+        .hero {
             text-align: center;
+            color: white;
+            padding: 60px 20px;
             margin-bottom: 60px;
-            animation: fadeInDown 1s ease;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .header-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 50px 40px;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             position: relative;
             overflow: hidden;
         }
 
-        .header-content::before {
-            content: '🎭';
-            position: absolute;
-            font-size: 200px;
-            opacity: 0.05;
-            right: -30px;
-            top: -50px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        h1 {
-            font-size: 3.5em;
-            font-weight: 700;
-            background: linear-gradient(135deg, #8B6F47 0%, #C4A672 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .subtitle {
-            font-size: 1.3em;
-            color: #666;
-            font-weight: 300;
-        }
-
-        /* Cards Grid */
-        .cards-grid {
-            display: grid;
-            gap: 30px;
-            animation: fadeInUp 1s ease 0.3s backwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 0;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-        }
-
-        .card::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #8B6F47, #C4A672, #D4AF77);
-            background-size: 200% 100%;
-            animation: gradientMove 3s linear infinite;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1503095396549-807759245b35?w=1200&h=400&fit=crop') center/cover;
+            opacity: 0.2;
+            z-index: -1;
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.8s ease;
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(139, 111, 71, 0.4);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         }
 
-        .question-header {
-            background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%);
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 4px solid #667eea;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card-number {
+            display: inline-flex;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px 35px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .question-header::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(255,255,255,0.1);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            right: -100px;
-            top: -100px;
-        }
-
-        .number-badge {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8em;
-            font-weight: 700;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 1;
-        }
-
-        .question-text {
-            font-size: 1.4em;
-            font-weight: 600;
-            flex: 1;
-            position: relative;
-            z-index: 1;
-        }
-
-        .answer-content {
-            padding: 35px;
-        }
-
-        .answer-main {
-            font-size: 1.15em;
-            line-height: 1.9;
-            color: #333;
+            font-size: 1.5em;
+            font-weight: bold;
             margin-bottom: 20px;
         }
 
-        .highlight {
-            background: linear-gradient(135deg, #D4AF77 0%, #F4E5C2 100%);
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-weight: 600;
-            color: #3d2f1f;
-            box-shadow: 0 3px 10px rgba(196, 166, 114, 0.4);
-            display: inline-block;
+        .card h2 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
         }
 
-        .types-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .type-badge {
-            background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 15px;
-            font-size: 1em;
-            font-weight: 500;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(139, 111, 71, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .type-badge:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(139, 111, 71, 0.5);
-        }
-
-        .detail-box {
-            background: linear-gradient(135deg, #F5EBE0 0%, #E8DCC8 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin-top: 20px;
-            border-left: 5px solid #8B6F47;
-            color: #444;
+        .card p {
+            color: #555;
             line-height: 1.8;
-        }
-
-        .detail-box strong {
-            color: #8B6F47;
-            font-weight: 600;
-        }
-
-        .feature-item {
-            padding: 15px 0;
-            border-bottom: 1px dashed #ddd;
-        }
-
-        .feature-item:last-child {
-            border-bottom: none;
-        }
-
-        .feature-icon {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%);
-            border-radius: 50%;
-            text-align: center;
-            line-align: center;
-            margin-right: 10px;
-            color: white;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 80px;
-            padding: 40px 20px;
-            color: white;
-            animation: fadeIn 1s ease 0.6s backwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .footer-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .footer-content p {
-            margin: 10px 0;
+            margin-bottom: 15px;
             font-size: 1.1em;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2em;
-            }
-            
-            .question-text {
-                font-size: 1.1em;
-            }
-            
-            .header-content {
-                padding: 35px 25px;
-            }
-
-            .types-grid {
-                grid-template-columns: 1fr;
-            }
+        .answer {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
         }
 
-        /* Scroll animation */
-        .card {
-            opacity: 0;
-            animation: slideInUp 0.6s ease forwards;
+        .list-items {
+            list-style: none;
+            padding: 0;
         }
 
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
-        .card:nth-child(5) { animation-delay: 0.5s; }
+        .list-items li {
+            background: #f8f9fa;
+            padding: 12px 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
 
-        @keyframes slideInUp {
+        .list-items li:hover {
+            background: #e9ecef;
+            transform: translateX(10px);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid #764ba2;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -363,127 +243,348 @@
                 transform: translateY(0);
             }
         }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                gap: 0;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-menu a {
+                padding: 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-    
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">
+                🎭 ละครตะวันตก
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-menu" id="navMenu">
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#types">ประเภท</a></li>
+                <li><a href="#history">ประวัติศาสตร์</a></li>
+                <li><a href="#about">เกี่ยวกับ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero" id="home">
+        <h1>🎭 ประวัติศาสตร์ละครตะวันตก</h1>
+        <p>สำรวจวิวัฒนาการของละครตะวันตกยุคปัจจุบัน จากอดีตสู่ปัจจุบัน</p>
+    </div>
+
     <div class="container">
-        <header>
-            <div class="header-content">
-                <h1>🎭 ละครตะวันตกยุคปัจจุบัน</h1>
-                <p class="subtitle">ความรู้พื้นฐานและประวัติศาสตร์ละครสมัยใหม่</p>
-            </div>
-        </header>
-
-        <div class="cards-grid">
+        <div class="cards-container" id="types">
+            <!-- Card 1: ประเภทของละครตะวันตก -->
             <div class="card">
-                <div class="question-header">
-                    <div class="number-badge">1</div>
-                    <div class="question-text">ละครตะวันตกยุคปัจจุบันมีละครอะไรบ้าง</div>
-                </div>
-                <div class="answer-content">
-                    <div class="answer-main">
-                        ละครตะวันตกยุคปัจจุบันแบ่งออกเป็น 3 ประเภทหลัก:
-                    </div>
-                    <div class="types-grid">
-                        <div class="type-badge">1. ละครพลัง<br>(Dynamic Drama)</div>
-                        <div class="type-badge">2. ละครสมัยใหม่<br>(Modern Drama)</div>
-                        <div class="type-badge">3. ละครเอปิกมหากาพย์<br>(Epic Drama)</div>
-                    </div>
-                    <div class="detail-box">
-                        ละครทั้ง 3 ประเภทนี้มีลักษณะและรูปแบบที่แตกต่างกัน โดยสะท้อนยุคสมัยและการเปลี่ยนแปลงทางสังคมในแต่ละช่วงเวลา
+                <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=600&h=400&fit=crop" alt="Theatre Stage" class="card-image">
+                <div class="card-content">
+                    <div class="card-number">1</div>
+                    <h2>ประเภทของละครตะวันตก</h2>
+                    <p>ละครตะวันตกในยุคปัจจุบันมีความหลากหลายและพัฒนาไปตามกาลเวลา สะท้อนให้เห็นถึงการเปลี่ยนแปลงของสังคม วัฒนธรรม และความคิดของมนุษย์ แบ่งออกเป็น 3 ประเภทหลักดังนี้:</p>
+                    <ul class="list-items">
+                        <li><strong>ละครพลอง (Experimental Theatre)</strong> - เป็นการทดลองรูปแบบการแสดงแบบใหม่ๆ ท้าทายความคิดเดิม ทำลายกฎเกณฑ์ที่มีอยู่ ใช้เทคโนโลยีและนวัตกรรมทางศิลปะ เน้นการมีส่วนร่วมของผู้ชม สร้างประสบการณ์ที่แปลกใหม่และไม่เหมือนใคร</li>
+                        <li><strong>ละครสมัยใหม่ (Contemporary Theatre)</strong> - สะท้อนสังคมและชีวิตร่วมสมัย นำเสนอประเด็นปัญหาทางสังคม การเมือง เศรษฐกิจ และวัฒนธรรม ใช้ภาษาและสไตล์ที่ทันสมัย เข้าถึงง่าย เข้าใจได้โดยผู้ชมทั่วไป</li>
+                        <li><strong>ละครเอปิกมหากาพย์ (Epic Theatre)</strong> - พัฒนาโดย Bertolt Brecht นักเขียนบทละครชาวเยอรมัน เล่าเรื่องราวขนาดใหญ่ มีการใช้เทคนิค alienation effect (Verfremdungseffekt) เพื่อให้ผู้ชมคิดวิเคราะห์และใช้เหตุผลมากกว่าการซาบซึ้งทางอารมณ์</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <strong>💡 จุดเด่นของละครยุคปัจจุบัน:</strong><br>
+                        ละครในยุคนี้มุ่งเน้นการสะท้อนความเป็นจริงของสังคม ไม่มีการโอ้อวดหรือแต่งเติมเกินความจำเป็น ใช้ภาษาที่เข้าใจง่าย และนำเสนอเรื่องราวที่ผู้ชมสามารถเชื่อมโยงกับชีวิตจริงได้
                     </div>
                 </div>
             </div>
 
+            <!-- Card 2: ละครเพลง -->
             <div class="card">
-                <div class="question-header">
-                    <div class="number-badge">2</div>
-                    <div class="question-text">ละครเพลงกำเนิดขึ้นในช่วงสงครามโลกครั้งที่เท่าไหร่</div>
-                </div>
-                <div class="answer-content">
-                    <div class="answer-main">
-                        ละครเพลงกำเนิดและรุ่งเรืองในช่วง <span class="highlight">สงครามโลกครั้งที่ 1</span>
+                <img src="https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=600&h=400&fit=crop" alt="Musical Theatre" class="card-image">
+                <div class="card-content">
+                    <div class="card-number">2</div>
+                    <h2>ละครเพลง (Musical Theatre)</h2>
+                    <p>ละครเพลงเป็นรูปแบบการแสดงที่ผสมผสานระหว่างดนตรี เพลง การเต้น และการแสดงละครเข้าด้วยกัน เป็นศิลปะการแสดงที่ครบองค์ประกอบที่สุด ในรูปแบบสมัยใหม่เริ่มกำเนิดและพัฒนาอย่างเต็มรูปแบบในช่วง:</p>
+                    <div class="answer">
+                        สงครามโลกครั้งที่ 1 (ค.ศ. 1914-1918)
                     </div>
-                    <div class="detail-box">
-                        ช่วงเวลานี้ (ค.ศ. 1914-1918) เป็นช่วงที่ละครเพลงเริ่มพัฒนาและกลายเป็นรูปแบบศิลปะการแสดงที่ได้รับความนิยมอย่างมาก โดยเฉพาะในสหรัฐอเมริกาและยุโรป ละครเพลงช่วยยกระดับจิตใจของผู้คนในช่วงสงคราม
+                    <p style="margin-top: 15px;">เป็นช่วงเวลาที่ละครเพลงเริ่มมีความนิยมและพัฒนารูปแบบที่โดดเด่นในสหรัฐอเมริกา โดยเฉพาะที่ Broadway ในนิวยอร์ก ซึ่งกลายเป็นศูนย์กลางของละครเพลงระดับโลก</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>1927:</strong> "Show Boat" ละครเพลงสมัยใหม่เรื่องแรกที่มีโครงเรื่องและดนตรีที่บูรณาการกันอย่างสมบูรณ์
+                        </div>
+                        <div class="timeline-item">
+                            <strong>1940-1960:</strong> ยุคทองของละครเพลง ด้วยผลงานของ Rodgers & Hammerstein เช่น "Oklahoma!", "South Pacific", "The King and I" และ "The Sound of Music"
+                        </div>
+                        <div class="timeline-item">
+                            <strong>1970-ปัจจุบัน:</strong> ละครเพลงสมัยใหม่ที่มีความหลากหลาย เช่น "Les Misérables", "The Phantom of the Opera", "Hamilton" และอื่นๆ
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <strong>🎵 องค์ประกอบสำคัญของละครเพลง:</strong><br>
+                        การร้องเพลง, การเต้น, การแสดง, เรื่องราวที่น่าสนใจ, ดนตรีที่ไพเราะ และการผสมผสานองค์ประกอบทั้งหมดเข้าด้วยกันอย่างลงตัว
                     </div>
                 </div>
             </div>
 
+            <!-- Card 3: ละครรีอัลลิสติก -->
             <div class="card">
-                <div class="question-header">
-                    <div class="number-badge">3</div>
-                    <div class="question-text">ละครชาติยนิยมเกิดขึ้นในช่วงใด</div>
-                </div>
-                <div class="answer-content">
-                    <div class="answer-main">
-                        ละครชาติยนิยมเกิดขึ้นในช่วง <span class="highlight">ค.ศ. 1870-1879</span>
+                <img src="https://images.unsplash.com/photo-1516981879613-9f5da904015f?w=600&h=400&fit=crop" alt="Realistic Theatre" class="card-image">
+                <div class="card-content">
+                    <div class="card-number">3</div>
+                    <h2>ละครรีอัลลิสติก (Realistic Theatre)</h2>
+                    <p>ละครแนวสัจนิยมหรือรีอัลลิสติกเป็นการปฏิวัติวงการละครในยุโรป เกิดขึ้นเป็นปฏิกิริยาต่อละครโรแมนติกและเมโลดรามาที่มักเน้นความโอ้อวดและไม่สมจริง มุ่งเน้นการนำเสนอชีวิตจริงของมนุษย์อย่างสมจริงที่สุด เกิดขึ้นและเฟื่องฟูในช่วงปลายศตวรรษที่ 19:</p>
+                    <div class="answer">
+                        ค.ศ. 1870-1879 (ทศวรรษ 1870)
                     </div>
-                    <div class="detail-box">
-                        เป็นช่วงเวลาที่การเมืองและความรู้สึกรักชาติกำลังเข้มข้นในยุโรป ส่งผลให้เกิดละครที่สะท้อนความเป็นชาติ อัตลักษณ์ทางวัฒนธรรม และความภาคภูมิใจในประเทศของตนเอง
+                    <p style="margin-top: 15px;">เป็นยุคทองของละครสัจนิยมที่มุ่งเน้นการนำเสนอชีวิตจริงของมนุษย์อย่างตรงไปตรงมา ใช้ภาษาพูดในชีวิตประจำวัน ฉากและเครื่องแต่งกายสมจริง เนื้อเรื่องสะท้อนปัญหาสังคม การเมือง และศีลธรรมอย่างจริงจัง</p>
+                    
+                    <p style="margin-top: 10px;"><strong>ลักษณะสำคัญของละครรีอัลลิสติก:</strong></p>
+                    <ul class="list-items">
+                        <li><strong>ฉากและอุปกรณ์สมจริง:</strong> ใช้ฉากและอุปกรณ์ที่เหมือนจริง แม่นยำตามยุคสมัย มีรายละเอียดครบถ้วน เหมือนกับห้องจริงๆ ในชีวิตประจำวัน</li>
+                        <li><strong>ตัวละครมีมิติ:</strong> ตัวละครมีความซับซ้อน มีจิตวิทยาที่ลึกซึ้ง ไม่ใช่แค่ดีหรือชั่วอย่างเดียว แต่มีทั้งข้อดีและข้อเสีย เหมือนมนุษย์จริงๆ</li>
+                        <li><strong>เนื้อหาสะท้อนสังคม:</strong> เกี่ยวกับปัญหาสังคม ความแตกต่างระหว่างชนชั้น ปัญหาศีลธรรม และความขัดแย้งในครอบครัว</li>
+                        <li><strong>กำแพงที่สี่:</strong> ไม่มีการพูดถึงผู้ชม (breaking the fourth wall) นักแสดงทำเหมือนผู้ชมไม่ได้อยู่ที่นั่น สร้างภาพลวงตาว่ากำลังดูชีวิตจริง</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <strong>🎬 นักเขียนบทสำคัญของยุครีอัลลิสติก:</strong><br>
+                        Henrik Ibsen (นอร์เวย์), Anton Chekhov (รัสเซีย), George Bernard Shaw (ไอร์แลนด์), August Strindberg (สวีเดน) และ Arthur Miller (อเมริกา)
                     </div>
                 </div>
             </div>
 
+            <!-- Card 4: Henrik Ibsen -->
             <div class="card">
-                <div class="question-header">
-                    <div class="number-badge">4</div>
-                    <div class="question-text">บิดาแห่งละครสมัยใหม่คือใคร</div>
-                </div>
-                <div class="answer-content">
-                    <div class="answer-main">
-                        <span class="highlight">เฮนริก อิปเซ่น (Henrik Ibsen)</span> ชาวนอร์เวย์
+                <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=400&fit=crop" alt="Henrik Ibsen" class="card-image">
+                <div class="card-content">
+                    <div class="card-number">4</div>
+                    <h2>บิดาแห่งละครสมัยใหม่</h2>
+                    <p>บุคคลที่ได้รับการยกย่องว่าเป็นบิดาแห่งละครสมัยใหม่ (Father of Modern Drama):</p>
+                    <div class="answer">
+                        เฮนริก อิปเซ่น (Henrik Ibsen)
                     </div>
-                    <div class="detail-box">
-                        <strong>เฮนริก อิปเซ่น</strong> ได้รับการยกย่องว่าเป็น "บิดาแห่งละครสมัยใหม่" เนื่องจากผลงานของเขาที่นำเสนอปัญหาสังคมอย่างจริงจัง และใช้เทคนิคการเล่าเรื่องแบบสมจริง (Realism) ที่ส่งอิทธิพลต่อละครสมัยใหม่อย่างมาก<br><br>
-                        <strong>ผลงานที่มีชื่อเสียง:</strong> "A Doll's House" (บ้านตุ๊กตา), "Hedda Gabler", "An Enemy of the People"
+                    <p style="margin-top: 15px;">นักเขียนบทละครชาวนอร์เวย์ (ค.ศ. 1828-1906) ที่ปฏิวัติวงการละครด้วยการนำเสนอปัญหาสังคมและจิตวิทยาของตัวละครอย่างลึกซึ้ง เปลี่ยนวิธีการเขียนและการแสดงละครไปตลอดกาล</p>
+                    
+                    <p style="margin-top: 15px;"><strong>ผลงานสำคัญของ Henrik Ibsen:</strong></p>
+                    <ul class="list-items">
+                        <li><strong>"A Doll's House" (บ้านตุ๊กตา, 1879)</strong> - กล่าวถึงสิทธิสตรีและความเป็นอิสระ ถือเป็นผลงานที่ปฏิวัติวงการละคร</li>
+                        <li><strong>"Ghosts" (1881)</strong> - วิพากษ์วิจารณ์ศีลธรรมและค่านิยมในสังคม</li>
+                        <li><strong>"An Enemy of the People" (1882)</strong> - เกี่ยวกับความจริงและการคอร์รัปชั่น</li>
+                        <li><strong>"Hedda Gabler" (1890)</strong> - ศึกษาจิตวิทยาของผู้หญิงที่ติดกับดักทางสังคม</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <strong>🏆 ผลกระทบของ Ibsen:</strong><br>
+                        Ibsen เปลี่ยนแปลงละครจากความบันเทิงที่เบาสมองเป็นสื่อที่ใช้วิพากษ์วิจารณ์สังคม กระตุ้นให้ผู้ชมคิดและตั้งคำถามกับค่านิยมในสังคม ผลงานของเขาได้รับการแสดงทั่วโลกและยังคงมีอิทธิพลต่อการเขียนละครในปัจจุบัน
                     </div>
                 </div>
             </div>
 
+            <!-- Card 5: ลักษณะละครสมัยใหม่ -->
             <div class="card">
-                <div class="question-header">
-                    <div class="number-badge">5</div>
-                    <div class="question-text">ละครสมัยใหม่สะท้อนถึงอะไรบ้าง</div>
-                </div>
-                <div class="answer-content">
-                    <div class="answer-main">
-                        ละครสมัยใหม่สะท้อนลักษณะสำคัญ 5 ประการ:
+                <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=400&fit=crop" alt="Modern Drama" class="card-image">
+                <div class="card-content">
+                    <div class="card-number">5</div>
+                    <h2>ละครสมัยใหม่สะท้อนถึง</h2>
+                    <p>ละครสมัยใหม่มีลักษณะเด่นที่แตกต่างจากละครในยุคก่อนหน้าอย่างชัดเจน โดยมุ่งเน้นการนำเสนอความเป็นจริงและความเรียบง่าย:</p>
+                    <ul class="list-items">
+                        <li><strong>ความเป็นจริงของชีวิต (Realism):</strong> นำเสนอชีวิตจริงของมนุษย์อย่างตรงไปตรงมา ไม่มีการปิดบัง แสดงทั้งด้านดีและด้านเลวของมนุษย์ สะท้อนปัญหาสังคมที่แท้จริง</li>
+                        <li><strong>ไม่มีการแต่งเติม (No Embellishment):</strong> ตรงไปตรงมา ไม่โอ้อวด ไม่มีการตกแต่งหรือพูดเกินจริง ใช้ภาษาธรรมดาที่ใช้ในชีวิตประจำวัน</li>
+                        <li><strong>ไม่มีความสวยงามเข้มข้น (Less Aesthetic Focus):</strong> เน้นความจริงและความหมายมากกว่าความงามภายนอก ไม่ใช่ว่าไม่สวย แต่ความงามมาจากความจริงและความลึกซึ้งของเนื้อหา</li>
+                        <li><strong>ปราศจากภาษาสำนวนซับซ้อน (Simple Language):</strong> ใช้ภาษาเข้าใจง่าย ไม่มีถ้อยคำโวหารหรือบทกวี พูดแบบคนธรรมดาในชีวิตจริง ทำให้ผู้ชมรู้สึกเข้าถึงและเข้าใจได้ง่าย</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <strong>🎯 เป้าหมายของละครสมัยใหม่:</strong><br>
+                        ทำให้ผู้ชมเห็นตัวเองและสังคมผ่านละคร กระตุ้นให้คิดวิเคราะห์ และอาจนำไปสู่การเปลี่ยนแปลงทางสังคม ละครจึงไม่ใช่แค่ความบันเทิง แต่เป็นเครื่องมือในการส่องกระจกสะท้อนสังคม
                     </div>
-                    <div class="detail-box">
-                        <div class="feature-item">
-                            <strong>✦ ความเป็นจริงของชีวิต</strong><br>
-                            นำเสนอชีวิตและปัญหาที่เกิดขึ้นจริงในสังคม ไม่ใช่เรื่องแต่งหรือจินตนาการ
+                </div>
+            </div>
+
+            <!-- Card 6: วิวัฒนาการละครตะวันตก -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Theatre Evolution" class="card-image">
+                <div class="card-content">
+                    <div class="card-number">6</div>
+                    <h2>วิวัฒนาการของละครตะวันตก</h2>
+                    <p>ละครตะวันตกมีการพัฒนาอย่างต่อเนื่องตลอดประวัติศาสตร์:</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>ยุคกรีก-โรมัน (500 BC - 500 AD):</strong> ละครโศกนาฏกรรมและตลก มีการใช้หน้ากาก มุ่งเน้นเรื่องราวเทพนิยายและวีรบุรุษ
                         </div>
-                        <div class="feature-item">
-                            <strong>✦ ไม่มีการแต่งเติม</strong><br>
-                            ไม่ใช้ภาษาหรือเนื้อหาที่เกินจริง แต่นำเสนอความจริงตามที่เป็น
+                        <div class="timeline-item">
+                            <strong>ยุคกลาง (500-1500):</strong> ละครศาสนา เล่าเรื่องในพระคัมภีร์ แสดงในโบสถ์และลานเมือง
                         </div>
-                        <div class="feature-item">
-                            <strong>✦ ไม่มีความงมงาย</strong><br>
-                            ปราศจากความเชื่อที่ไร้เหตุผล เน้นความสมเหตุสมผลและเหตุผลเชิงวิทยาศาสตร์
+                        <div class="timeline-item">
+                            <strong>ยุคฟื้นฟูศิลปวิทยา (1500-1600):</strong> ละครกลับมาเฟื่องฟู William Shakespeare เป็นนักเขียนบทที่ยิ่งใหญ่ที่สุด
                         </div>
-                        <div class="feature-item">
-                            <strong>✦ ความเข็มแข็งและซื่อตรง</strong><br>
-                            กล้าหาญในการนำเสนอความจริง ไม่หลบเลี่ยงประเด็นสำคัญ แม้จะเจ็บปวดหรือขัดแย้ง
+                        <div class="timeline-item">
+                            <strong>ยุครีอัลลิสติก (1870s-1900s):</strong> Henrik Ibsen, Anton Chekhov นำเสนอชีวิตจริงและปัญหาสังคม
                         </div>
-                        <div class="feature-item">
-                            <strong>✦ การวิจารณ์สังคม</strong><br>
-                            ตั้งคำถามและวิจารณ์โครงสร้างทางสังคม ชนชั้น และปัญหาต่างๆ อย่างลึกซึ้ง
+                        <div class="timeline-item">
+                            <strong>ยุคสมัยใหม่ (1900-ปัจจุบัน):</strong> ละครมีความหลากหลาย ทดลองรูปแบบใหม่ๆ ใช้เทคโนโลยี และสะท้อนสังคมร่วมสมัย
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7: เทคนิคการแสดงละคร -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=600&h=400&fit=crop" alt="Acting Technique" class="card-image">
+                <div class="card-content">
+                    <div class="card-number">7</div>
+                    <h2>เทคนิคการแสดงสำคัญ</h2>
+                    <p>การแสดงละครสมัยใหม่มีเทคนิคหลากหลายที่พัฒนาขึ้น:</p>
+                    <ul class="list-items">
+                        <li><strong>Method Acting (Stanislavski System):</strong> นักแสดงต้องเข้าถึงอารมณ์จริงและประสบการณ์ส่วนตัวเพื่อแสดงบทบาท พัฒนาโดย Konstantin Stanislavski</li>
+                        <li><strong>Physical Theatre:</strong> เน้นการใช้ร่างกายและการเคลื่อนไหวในการสื่อความหมาย มากกว่าการพูด</li>
+                        <li><strong>Brechtian Technique:</strong> นักแสดงแสดงถึงตัวละครแต่ไม่ต้องเป็นตัวละครจริงๆ เพื่อให้ผู้ชมคิดวิเคราะห์</li>
+                        <li><strong>Improvisation:</strong> การแสดงโดยไม่มีบทเขียนไว้ล่วงหน้า ทดสอบความสามารถและความคิดสร้างสรรค์ของนักแสดง</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 8: ละครร่วมสมัย -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&h=400&fit=crop" alt="Contemporary Theatre" class="card-image">
+                <div class="card-content">
+                    <div class="card-number">8</div>
+                    <h2>ละครร่วมสมัยในศตวรรษที่ 21</h2>
+                    <p>ละครในยุคปัจจุบันมีลักษณะพิเศษและแตกต่างจากยุคก่อนหน้า:</p>
+                    <ul class="list-items">
+                        <li><strong>ใช้เทคโนโลยี:</strong> มีการใช้จอภาพ โปรเจคเตอร์ แสง เสียง และเทคโนโลยีดิจิทัลสร้างประสบการณ์ใหม่</li>
+                        <li><strong>ละครมัลติมีเดีย:</strong> ผสมผสานวิดีโอ ภาพเคลื่อนไหว และศิลปะดิจิทัลเข้ากับการแสดงสด</li>
+                        <li><strong>ละครแบบมีส่วนร่วม:</strong> ผู้ชมไม่ใช่แค่นั่งดู แต่มีส่วนร่วมในการแสดง ตัดสินใจเลือกทางเดินเรื่อง</li>
+                        <li><strong>ความหลากหลาย:</strong> เปิดรับเรื่องราวจากทุกวัฒนธรรม ทุกเพศ ทุกชนชั้น สะท้อนสังคมที่หลากหลาย</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <strong>🌐 แนวโน้มอนาคต:</strong><br>
+                        ละครในอนาคตจะมีการใช้ Virtual Reality (VR), Augmented Reality (AR) และ AI มากขึ้น สร้างประสบการณ์ที่ผสมผสานระหว่างโลกจริงและโลกดิจิทัล
                     </div>
                 </div>
             </div>
         </div>
-
-        <footer>
-            <div class="footer-content">
-                <p>🎬 ข้อมูลความรู้เกี่ยวกับละครตะวันตกยุคปัจจุบัน</p>
-                <p>สร้างขึ้นเพื่อการศึกษาและเผยแพร่ความรู้ทางศิลปะการแสดง</p>
-            </div>
-        </footer>
     </div>
+
+    <footer id="about">
+        <p>🎭 ละครเป็นกระจกสะท้อนสังคม เปิดหน้าต่างสู่จิตใจมนุษย์ 🎭</p>
+        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.7;">© 2024 ประวัติศาสตร์ละครตะวันตก - รวบรวมความรู้เพื่อการศึกษา</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Add scroll animation
+        const cards = document.querySelectorAll('.card');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
